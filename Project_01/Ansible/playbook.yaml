@@ -1,6 +1,6 @@
 ---
  - name : install nginx on node from master
-   host : node
+   hosts : node
    become : yes
 
    tasks:
