@@ -1,23 +1,21 @@
 ---
- - name : install nginx on node from master
-   hosts : node
-   become : yes
+- name: Install Nginx on Amazon Linux node
+  hosts: node
+  become: yes
 
-   tasks:
-    - name: Update packages
+  tasks:
+    - name: Update all packages
       yum:
-        name: "*"
+        name: '*'
         state: latest
 
-    - name: Install nginx
+    - name: Install Nginx
       yum:
         name: nginx
         state: present
 
-    - name: Start nginx
+    - name: Enable and start Nginx
       service:
         name: nginx
         state: started
         enabled: yes
-
-  
