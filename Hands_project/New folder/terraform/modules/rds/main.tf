@@ -42,7 +42,7 @@ resource "aws_security_group" "db_sg" {
 }
 
 resource "random_password" "rnd" {
-  length = 16
-  override_char_set = "!@#$%&*()_+-=[]{}|"
+  length  = 16
+  special = true
 }
 output "rds_endpoint" { value = aws_db_instance.mysql.address }
