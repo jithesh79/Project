@@ -14,14 +14,14 @@ resource "aws_db_instance" "mysql" {
   engine               = "mysql"
   engine_version       = "8.0"
   instance_class       = "db.t3.micro"
-  name                 = "wordpressdb"
-  username             = "wpadmin"
+  db_name              = "wordpressdb"
+  username             = "admin"
   password             = random_password.rnd.result
-  db_subnet_group_name = aws_db_subnet_group.db_subnet.name
+  parameter_group_name = "default.mysql8.0"
   skip_final_snapshot  = true
   publicly_accessible  = false
-  vpc_security_group_ids = [aws_security_group.db_sg.id]
-  tags = { Name = "${var.project}-rds" }
+  vpc_security_group_ids = [aws_security_group.rds.id]
+  db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name
 }
 
 resource "aws_security_group" "db_sg" {
