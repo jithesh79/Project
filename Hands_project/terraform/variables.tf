@@ -1,11 +1,9 @@
-variable "vpc_cidr" {
-  default = "10.0.0.0/16"
+variable "db_username" {}
+variable "db_password" {}
+variable "vpc_id" {}
+variable "private_subnets" {
+  type = list(string)
 }
-
-variable "public_subnet_count" {
-  default = 2
-}
-
-variable "private_subnet_count" {
-  default = 2
+variable "ecs_subnet_cidrs" {
+  type = list(string)
 }
